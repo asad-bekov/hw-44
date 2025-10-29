@@ -124,7 +124,7 @@ resource "yandex_compute_instance_group" "lamp_group" {
     }
 
     network_interface {
-      subnet_ids = [yandex_vpc_subnet.lamp_subnet.id]  # используем новую подсеть
+      subnet_ids = [yandex_vpc_subnet.lamp_subnet.id]
       nat       = true
     }
 
@@ -337,7 +337,7 @@ yc storage s3 cp ./netology-image.jpg s3://netology-asad-20251027/netology-image
 
 ### Скриншот 4 — Проверка публичного доступа к файлу
 
-**Описание:** Проверка публичного доступа к загруженному изображению — отображение картинки с логотипами DevOps-инструментов по прямой ссылке в Object Storage.  
+**Описание:** Проверка публичного доступа к загруженному изображению — отображение картинки по прямой ссылке в Object Storage.  
 
 ![Проверка публичного доступа к файлу](https://github.com/asad-bekov/hw-44/blob/main/img/4.PNG)
 
@@ -360,7 +360,7 @@ yc storage s3 cp ./netology-image.jpg s3://netology-asad-20251027/netology-image
 terraform apply -auto-approve
 ```
 
-**Описание:** Создание Instance Group (группы виртуальных машин) с именем `lamp_group`. В процессе развертывания создается несколько экземпляров VM, что видно по прогрессу создания и финальному сообщению об успешном завершении.  
+**Описание:** Создание Instance Group (группы виртуальных машин) с именем `lamp_group`.  
 
 ![Создание Instance Group](https://github.com/asad-bekov/hw-44/blob/main/img/5.PNG)
 
@@ -377,7 +377,7 @@ terraform apply -auto-approve
 ### Скриншот 7 — Проверка веб-страницы на Instance
 
 **Открытие публичного IP-адреса в браузере (например, `http://158.160.44.66`)**.  
-**Описание:** Проверка работы веб-страницы, развернутой на одной из ВМ группы. Страница содержит заголовок **"Welcome to Netology LAMP Group"** и изображение, загруженное ранее в Object Storage.  
+**Описание:** Проверка работы веб-страницы, развернутой на одной из ВМ группы.  
 
 ![Проверка веб-страницы на Instance](https://github.com/asad-bekov/hw-44/blob/main/img/7.PNG)
 
@@ -392,7 +392,7 @@ terraform apply -auto-approve
 terraform apply -auto-approve
 ```
 
-**Описание:** Создание Network Load Balancer (`lamp_nlb`) для распределения трафика между экземплярами Instance Group. После успешного создания Terraform выводит ID группы и публичный IP балансировщика — например, `84.201.149.106`.  
+**Описание:** Создание Network Load Balancer (`lamp_nlb`). После успешного создания Terraform выводит ID группы и публичный IP балансировщика — `84.201.149.106`.  
 
 ![Настройка сетевого балансировщика](https://github.com/asad-bekov/hw-44/blob/main/img/8.PNG)
 
@@ -401,7 +401,7 @@ terraform apply -auto-approve
 ### Скриншот 9 — Проверка работы Load Balancer
 
 **Открытие публичного IP-адреса балансировщика (например, `http://84.201.149.106`)**.  
-**Описание:** Проверка работы Network Load Balancer — страница **"Welcome to Netology LAMP Group"** отображается успешно, что подтверждает корректное распределение трафика между ВМ.  
+**Описание:** Проверка работы Network Load Balancer — страница подтверждает корректное распределение трафика между ВМ.  
 
 ![Проверка работы Load Balancer](https://github.com/asad-bekov/hw-44/blob/main/img/9.PNG)
 
@@ -410,7 +410,7 @@ terraform apply -auto-approve
 ### Скриншот 10 — Проверка VM после настройки балансировщика
 
 **Просмотр в веб-консоли YC — *Compute Cloud → Виртуальные машины***.  
-**Описание:** Повторная проверка состояния виртуальных машин в группе. Все экземпляры находятся в статусе *Running*, что подтверждает их готовность к работе и подключение к балансировщику.  
+**Описание:** Повторная проверка состояния виртуальных машин в группе. Все экземпляры находятся в статусе *Running*.  
 
 ![Проверка VM после настройки балансировщика](https://github.com/asad-bekov/hw-44/blob/main/img/10.PNG)
 
@@ -447,7 +447,7 @@ curl http://84.201.149.106
 terraform apply -auto-approve
 ```
 
-**Описание:** Создание Application Load Balancer (`lamp_host`) с виртуальным хостом. Terraform развертывает ALB, привязывает его к целевой группе и выводит публичный IP (например, `158.160.170.14`).  
+**Описание:** Создание Application Load Balancer (`lamp_host`) с виртуальным хостом. Terraform развертывает ALB, привязывает его к целевой группе и выводит публичный IP - `158.160.170.14`.  
 
 ![Создание Application Load Balancer](https://github.com/asad-bekov/hw-44/blob/main/img/13.PNG)
 
@@ -456,7 +456,7 @@ terraform apply -auto-approve
 ### Скриншот 14 — Общий обзор инфраструктуры в YC
 
 **Просмотр в YC — *Marketplace → Сервисы каталога***.  
-**Описание:** На скриншоте видны все созданные компоненты: 3 ВМ в Compute Cloud, 1 bucket в Object Storage, 1 Network Load Balancer и 1 Application Load Balancer. Также отображается информация о целевых группах (в выпадающем меню), что подтверждает корректное развертывание всей инфраструктуры.  
+**Описание:** Созданы 3 ВМ в Compute Cloud, 1 bucket в Object Storage, 1 Network Load Balancer и 1 Application Load Balancer. Также отображается информация о целевых группах (в выпадающем меню), что подтверждает корректное развертывание всей инфраструктуры.  
 
 ![Общий обзор инфраструктуры в консоли YC](https://github.com/asad-bekov/hw-44/blob/main/img/14.PNG)
 
