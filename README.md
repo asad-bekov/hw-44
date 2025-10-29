@@ -467,7 +467,7 @@ terraform apply -auto-approve
 **Открытие IP-адреса NLB (`http://84.201.149.106`)**.  
 **Описание:** Проверка работы сайта через Network Load Balancer (L4). Страница успешно загружается, балансировщик корректно распределяет TCP/UDP-трафик.  
 
-![Проверка NLB](https://github.com/asad-bekov/hw-44/blob/main/img/15.1.PNG)
+![Проверка NLB](https://github.com/asad-bekov/hw-44/blob/main/img/15.2.PNG)
 
 ---
 
@@ -476,7 +476,7 @@ terraform apply -auto-approve
 **Открытие IP-адреса ALB (`http://158.160.170.14`)**.  
 **Описание:** Проверка работы сайта через Application Load Balancer (L7). Страница отображается корректно — ALB обрабатывает HTTP-запросы и маршрутизирует трафик по приложениям.  
 
-![Проверка ALB](https://github.com/asad-bekov/hw-44/blob/main/img/15.2.PNG)
+![Проверка ALB](https://github.com/asad-bekov/hw-44/blob/main/img/15.1.PNG)
 
 **Итог:**
 
