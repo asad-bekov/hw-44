@@ -1,0 +1,4 @@
+*.tfvars
+key.json
+*.key
+*.pem
