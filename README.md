@@ -305,7 +305,7 @@ terraform apply -auto-approve
 
 **Описание:** Создание bucket в Object Storage.  
 
-![Создание bucket](https://github.com/asad-bekov/hw-44/blob/main/img/1.png)
+![Создание bucket](https://github.com/asad-bekov/hw-44/blob/main/img/1.PNG)
 
 ---
 
@@ -318,7 +318,7 @@ terraform apply -auto-approve
 
 **Описание:** Подтверждение создания ресурса `yandex_storage_bucket.image_bucket` с публичным доступом и настройками версионирования.  
 
-![Подтверждение создания bucket](https://github.com/asad-bekov/hw-44/blob/main/img/2.png)
+![Подтверждение создания bucket](https://github.com/asad-bekov/hw-44/blob/main/img/2.PNG)
 
 ---
 
@@ -331,7 +331,7 @@ yc storage s3 cp ./netology-image.jpg s3://netology-asad-20251027/netology-image
 
 **Описание:** Загрузка файла `netology-image.jpg` в созданный bucket и установка публичного доступа к объекту.  
 
-![Загрузка файла в bucket](https://github.com/asad-bekov/hw-44/blob/main/img/3.png)
+![Загрузка файла в bucket](https://github.com/asad-bekov/hw-44/blob/main/img/3.PNG)
 
 ---
 
@@ -340,7 +340,7 @@ yc storage s3 cp ./netology-image.jpg s3://netology-asad-20251027/netology-image
 **Команда:** Открытие URL в браузере.  
 **Описание:** Проверка публичного доступа к загруженному изображению — отображение картинки с логотипами DevOps-инструментов по прямой ссылке в Object Storage.  
 
-![Проверка публичного доступа к файлу](https://github.com/asad-bekov/hw-44/blob/main/img/4.png)
+![Проверка публичного доступа к файлу](https://github.com/asad-bekov/hw-44/blob/main/img/4.PNG)
 
 ---
 
@@ -363,7 +363,7 @@ terraform apply -auto-approve
 
 **Описание:** Создание Instance Group (группы виртуальных машин) с именем `lamp_group`. В процессе развертывания создается несколько экземпляров VM, что видно по прогрессу создания и финальному сообщению об успешном завершении.  
 
-![Создание Instance Group](https://github.com/asad-bekov/hw-44/blob/main/img/5.png)
+![Создание Instance Group](https://github.com/asad-bekov/hw-44/blob/main/img/5.PNG)
 
 ---
 
@@ -372,7 +372,7 @@ terraform apply -auto-approve
 **Команда:** Просмотр в веб-консоли YC — раздел *Compute Cloud → Виртуальные машины*.  
 **Описание:** Проверка созданных виртуальных машин в группе. На скриншоте видны три запущенных экземпляра (в статусе *Running*) с ОС LAMP, их IP-адреса и зона доступности `ru-central1-a`.  
 
-![Проверка Instance Group в YC](https://github.com/asad-bekov/hw-44/blob/main/img/6.png)
+![Проверка Instance Group в YC](https://github.com/asad-bekov/hw-44/blob/main/img/6.PNG)
 
 ---
 
@@ -381,7 +381,7 @@ terraform apply -auto-approve
 **Команда:** Открытие публичного IP-адреса в браузере (например, `http://158.160.44.66`).  
 **Описание:** Проверка работы веб-страницы, развернутой на одной из ВМ группы. Страница содержит заголовок **"Welcome to Netology LAMP Group"** и изображение, загруженное ранее в Object Storage.  
 
-![Проверка веб-страницы на Instance](https://github.com/asad-bekov/hw-44/blob/main/img/7.png)
+![Проверка веб-страницы на Instance](https://github.com/asad-bekov/hw-44/blob/main/img/7.PNG)
 
 ---
 
@@ -396,7 +396,7 @@ terraform apply -auto-approve
 
 **Описание:** Создание Network Load Balancer (`lamp_nlb`) для распределения трафика между экземплярами Instance Group. После успешного создания Terraform выводит ID группы и публичный IP балансировщика — например, `84.201.149.106`.  
 
-![Настройка сетевого балансировщика](https://github.com/asad-bekov/hw-44/blob/main/img/8.png)
+![Настройка сетевого балансировщика](https://github.com/asad-bekov/hw-44/blob/main/img/8.PNG)
 
 ---
 
@@ -405,7 +405,7 @@ terraform apply -auto-approve
 **Команда:** Открытие публичного IP-адреса балансировщика (например, `http://84.201.149.106`).  
 **Описание:** Проверка работы Network Load Balancer — страница **"Welcome to Netology LAMP Group"** отображается успешно, что подтверждает корректное распределение трафика между ВМ.  
 
-![Проверка работы Load Balancer](https://github.com/asad-bekov/hw-44/blob/main/img/9.png)
+![Проверка работы Load Balancer](https://github.com/asad-bekov/hw-44/blob/main/img/9.PNG)
 
 ---
 
@@ -414,7 +414,7 @@ terraform apply -auto-approve
 **Команда:** Просмотр в веб-консоли YC — *Compute Cloud → Виртуальные машины*.  
 **Описание:** Повторная проверка состояния виртуальных машин в группе. Все экземпляры находятся в статусе *Running*, что подтверждает их готовность к работе и подключение к балансировщику.  
 
-![Проверка VM после настройки балансировщика](https://github.com/asad-bekov/hw-44/blob/main/img/10.png)
+![Проверка VM после настройки балансировщика](https://github.com/asad-bekov/hw-44/blob/main/img/10.PNG)
 
 ---
 
@@ -429,7 +429,7 @@ curl http://84.201.149.106
 
 **Описание:** Проверка отказоустойчивости балансировщика. Один из экземпляров удаляется вручную, после чего `curl` подтверждает, что страница продолжает отвечать — трафик перераспределяется между оставшимися ВМ.  
 
-![Проверка отказоустойчивости через CLI](https://github.com/asad-bekov/hw-44/blob/main/img/11.png)
+![Проверка отказоустойчивости через CLI](https://github.com/asad-bekov/hw-44/blob/main/img/11.PNG)
 
 ---
 
@@ -438,7 +438,7 @@ curl http://84.201.149.106
 **Команда:** Просмотр в YC — *Network Load Balancer → lamp-network-lb → Обзор*.  
 **Описание:** Проверка состояния балансировщика и целевых групп. После удаления одной ВМ балансировщик корректно обновил состояние — 2 экземпляра остаются *Healthy*.  
 
-![Проверка состояния Load Balancer в консоли](https://github.com/asad-bekov/hw-44/blob/main/img/12.png)
+![Проверка состояния Load Balancer в консоли](https://github.com/asad-bekov/hw-44/blob/main/img/12.PNG)
 
 ---
 
@@ -451,7 +451,7 @@ terraform apply -auto-approve
 
 **Описание:** Создание Application Load Balancer (`lamp_host`) с виртуальным хостом. Terraform развертывает ALB, привязывает его к целевой группе и выводит публичный IP (например, `158.160.170.14`).  
 
-![Создание Application Load Balancer](https://github.com/asad-bekov/hw-44/blob/main/img/13.png)
+![Создание Application Load Balancer](https://github.com/asad-bekov/hw-44/blob/main/img/13.PNG)
 
 ---
 
@@ -460,7 +460,7 @@ terraform apply -auto-approve
 **Команда:** Просмотр в YC — *Marketplace → Сервисы каталога*.  
 **Описание:** На скриншоте видны все созданные компоненты: 3 ВМ в Compute Cloud, 1 bucket в Object Storage, 1 Network Load Balancer и 1 Application Load Balancer. Также отображается информация о целевых группах (в выпадающем меню), что подтверждает корректное развертывание всей инфраструктуры.  
 
-![Общий обзор инфраструктуры в консоли YC](https://github.com/asad-bekov/hw-44/blob/main/img/14.png)
+![Общий обзор инфраструктуры в консоли YC](https://github.com/asad-bekov/hw-44/blob/main/img/14.PNG)
 
 ---
 
@@ -469,7 +469,7 @@ terraform apply -auto-approve
 **Команда:** Открытие IP-адреса NLB (`http://84.201.149.106`).  
 **Описание:** Проверка работы сайта через Network Load Balancer (L4). Страница успешно загружается, балансировщик корректно распределяет TCP/UDP-трафик.  
 
-![Проверка NLB](https://github.com/asad-bekov/hw-44/blob/main/img/15.1.png)
+![Проверка NLB](https://github.com/asad-bekov/hw-44/blob/main/img/15.1.PNG)
 
 ---
 
@@ -478,7 +478,7 @@ terraform apply -auto-approve
 **Команда:** Открытие IP-адреса ALB (`http://158.160.170.14`).  
 **Описание:** Проверка работы сайта через Application Load Balancer (L7). Страница отображается корректно — ALB обрабатывает HTTP-запросы и маршрутизирует трафик по приложениям.  
 
-![Проверка ALB](https://github.com/asad-bekov/hw-44/blob/main/img/15.2.png)
+![Проверка ALB](https://github.com/asad-bekov/hw-44/blob/main/img/15.2.PNG)
 
 **Итог:**
 
